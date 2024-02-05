@@ -60,12 +60,16 @@ public class MainActivity extends AppCompatActivity {
         String gender = getSelectedRadioButtonText();
         String hobbies = getSelectedCheckBoxesText();
 
-        // Create a message for the Snackbar
-        String message = "Nama: " + nama + "\nGender: " + gender + "\nHobbies: " + hobbies;
+        // Create a message for the horizontal Snackbar
+        String message = "Nama: " + nama + " | Gender: " + gender + " | Hobbies: " + hobbies;
 
-        // Show the Snackbar
-        Snackbar.make(findViewById(android.R.id.content), message, Snackbar.LENGTH_LONG).show();
+        // Show the horizontal Snackbar
+        Snackbar snackbar = Snackbar.make(findViewById(android.R.id.content), message, Snackbar.LENGTH_LONG);
+        View snackbarView = snackbar.getView();
+        snackbarView.setLayoutDirection(View.LAYOUT_DIRECTION_LTR); // Set layout direction to right-to-left
+        snackbar.show();
     }
+
 
     private String getSelectedRadioButtonText() {
         int selectedId = radioGroup.getCheckedRadioButtonId();
